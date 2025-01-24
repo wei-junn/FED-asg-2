@@ -6,12 +6,12 @@ Features
 1. Listing Management:
 Feature Set:
 
-Create New Listing: Allow sellers to add new items with categories, photos, descriptions, and price.
-Manage Listings: Sellers can view, edit, and delete their active listings on a separate webpage.
+Create New Listing: Allow sellers to add new items with categories, photos, descriptions, and price. Users have to input name, email and phone number for buyers to contact them.
+Manage Listings: Sellers can view, edit, and delete their active listings on the admin webpage.
 Active Listings Limit: Limit free active listings to 30 per user.
-Listing timeframe: limit active listings to a maximum of 30 days.
+Listing timeframe: Limit active listings to a maximum of 30 days.
 Bump Listing: Sellers can promote their listings by purchasing a "bump" (using a credit card simulation API like Stripe API).
-Filters: allow users to filter listings by their price, condition(brand new or second hand), category
+Filters: Allow buyers to filter listings by their price, condition(brand new or second hand), category
 
 Implementation Details:
 
@@ -31,7 +31,7 @@ Implementation Details:
 
 Implement a search bar that queries the RestDB listings collection using filters.
 Use JavaScript to render search results in real-time.
-Allow users to click a “Save”/likr button on a listing, which stores the listing ID in their profile.
+Allow users to click a “Save”/like button on a listing, which stores the listing ID in their profile.
 Animate the save action using a Lottie heart animation.
 
 3. Communication & Transactions:
@@ -90,10 +90,10 @@ Bump Purchase: Show a celebratory animation when a bump is successfully purchase
 Feedback Submission: Use a thank-you animation after feedback is submitted.
 
 5. Deployment:
+Buyers will view listings on a listings webpage, while sellers will list out their listings on an admin webpage
 Host the web application on GitHub Pages.
-Store media files (images) using Cloudinary.
 Use GitHub for version control, with meaningful commit messages and a well-documented README.md.
+
 Bonus Features (Optional Enhancements):
 Dark Mode toggle for better user experience.
-Progressive Web App (PWA) capabilities to allow offline access and mobile installation.
-Gamification Leaderboard showing the top sellers based on reviews or completed sales.
+Store media files (images) using Cloudinary.

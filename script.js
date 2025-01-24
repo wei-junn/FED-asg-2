@@ -10,7 +10,7 @@ setTimeout(() => {
 }, 200)
 
 //sign up and log in functions
-const restdbUrl = 'https://your-database-name.restdb.io/rest/users';
+const restdbUrl = 'https://mokesellasg2-66c7.restdb.io/rest/users?max=2';
 const apiKey = '6785c0de630e8a0e140b141d';
 
 function signUp() {

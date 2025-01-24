@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #4EA685;
-    --secondary-color: #57B894;
+    --primary-color: #00c6ff;
+    --secondary-color: #b740ff;
     --black: #000000;
     --white: #ffffff;
     --gray: #efefef;
@@ -10,6 +10,7 @@
     --google-color: #DB4437;
     --twitter-color: #1DA1F2;
     --insta-color: #E1306C;
+    /*background: linear-gradient(135deg, #00c6ff, #b740ff);*/
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
@@ -26,6 +27,88 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+
+/* Navigation Bar */
+header {
+    position: fixed; /* Ensures the navigation stays at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    background-color: #ffffff; /* Background for visibility */
+    z-index: 1000; /* High value to stay above other elements */
+    padding: 2rem 5rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    font-size: 1.8rem;
+    text-decoration: none;
+  }
+  nav a#logo {
+    color: #000000;
+    font-weight: 700;
+    font-size: 3rem;
+  }
+  nav ul a {
+    color: #000000;
+    font-size: 2.0rem;
+    font-weight: 600;
+  }
+  nav ul a:hover {
+    color: #b740ff;
+    border-bottom: 2px solid #b740ff;
+  }
+
+  @media only screen and (max-width: 991px) {
+    html {
+      font-size: 56.25%;
+    }
+    header {
+      padding: 2.2rem 5rem;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    html {
+      font-size: 50%;
+    }
+
+    nav ul {
+      background-color: black;
+      position: fixed;
+      left: -100vw;
+      top: 73.6px;
+      width: 100vw;
+      height: calc(100vh - 73.6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      transition: 1s;
+      gap: 0;
+    }
+  }
+  @media only screen and (max-width: 575px) {
+    html {
+      font-size: 46.87%;
+    }
+    header {
+      padding: 2rem 3rem;
+    }
+    nav ul {
+      top: 65.18px;
+      height: calc(100vh - 65.18px);
+    }
+  }
+
 
 .container {
     position: relative;
@@ -50,66 +133,42 @@ body {
     text-align: center;
 }
 
-.form-wrapper {
-    width: 100%;
-    max-width: 28rem;
+/* Style for the container of the text and button */
+.col.sign-in .form-wrapper {
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100%; /* Full height of the parent container */
+    text-align: center; /* Center the text */
 }
 
-.form {
-    padding: 1rem;
-    background-color: var(--white);
-    border-radius: 1.5rem;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transform: scale(0);
-    transition: .5s ease-in-out;
-    transition-delay: 1s;
+/* Style for the button */
+.col.sign-in button {
+    background-color: #00c6ff; /* Bright blue background */
+    color: white; /* White text */
+    padding: 15px 40px; /* Larger padding for size */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Larger font */
+    font-weight: bold;
+    width: auto; /* Adjust to content */
+    cursor: pointer; /* Pointer cursor */
+    transition: all 0.3s ease; /* Smooth hover effect */
+    margin-top: 20px; /* Increased space between text and button */
 }
 
-.input-group {
-    position: relative;
-    width: 100%;
-    margin: 1rem 0;
+/* Hover effect for button */
+.col.sign-in button:hover {
+    background-color: #b740ff; /* Purple background */
+    transform: scale(1.05); /* Slight zoom-in */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
 }
 
-.input-group i {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    font-size: 1.4rem;
-    color: var(--gray-2);
-}
 
-.input-group input {
-    width: 100%;
-    padding: 1rem 3rem;
-    font-size: 1rem;
-    background-color: var(--gray);
-    border-radius: .5rem;
-    border: 0.125rem solid var(--white);
-    outline: none;
-}
-
-.input-group input:focus {
-    border: 0.125rem solid var(--primary-color);
-}
-
-.form button {
-    cursor: pointer;
-    width: 100%;
-    padding: .6rem 0;
-    border-radius: .5rem;
-    border: none;
-    background-color: var(--primary-color);
-    color: var(--white);
-    font-size: 1.2rem;
-    outline: none;
-}
-
-.form p {
-    margin: 1rem 0;
-    font-size: .7rem;
+/* Optional: Center the button's parent paragraph for better alignment */
+.col.sign-in p {
+    text-align: center; /* Center the button inside its container */
 }
 
 .flex-col {
