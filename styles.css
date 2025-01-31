@@ -1,404 +1,216 @@
-:root {
-    --primary-color: #00c6ff;
-    --secondary-color: #b740ff;
-    --black: #000000;
-    --white: #ffffff;
-    --gray: #efefef;
-    --gray-2: #757575;
-
-    --facebook-color: #4267B2;
-    --google-color: #DB4437;
-    --twitter-color: #1DA1F2;
-    --insta-color: #E1306C;
-    /*background: linear-gradient(135deg, #00c6ff, #b740ff);*/
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 * {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
-
-html,
 body {
-    height: 100vh;
-    overflow: hidden;
+  background-color: #004754;
+  background: linear-gradient(to right, #004754, #bebd00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
 }
-
-/* Navigation Bar */
-header {
-    position: fixed; /* Ensures the navigation stays at the top */
-    top: 0;
-    left: 0;
-    width: 100%; /* Full width */
-    background-color: #ffffff; /* Background for visibility */
-    z-index: 1000; /* High value to stay above other elements */
-    padding: 2rem 5rem;
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-  nav a {
-    font-size: 1.8rem;
-    text-decoration: none;
-  }
-  nav a#logo {
-    color: #000000;
-    font-weight: 700;
-    font-size: 3rem;
-  }
-  nav ul a {
-    color: #000000;
-    font-size: 2.0rem;
-    font-weight: 600;
-  }
-  nav ul a:hover {
-    color: #b740ff;
-    border-bottom: 2px solid #b740ff;
-  }
-
-  @media only screen and (max-width: 991px) {
-    html {
-      font-size: 56.25%;
-    }
-    header {
-      padding: 2.2rem 5rem;
-    }
-  }
-  @media only screen and (max-width: 767px) {
-    html {
-      font-size: 50%;
-    }
-
-    nav ul {
-      background-color: black;
-      position: fixed;
-      left: -100vw;
-      top: 73.6px;
-      width: 100vw;
-      height: calc(100vh - 73.6px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      transition: 1s;
-      gap: 0;
-    }
-  }
-  @media only screen and (max-width: 575px) {
-    html {
-      font-size: 46.87%;
-    }
-    header {
-      padding: 2rem 3rem;
-    }
-    nav ul {
-      top: 65.18px;
-      height: calc(100vh - 65.18px);
-    }
-  }
-
-
 .container {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(60, 48, 48, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
 }
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100vh;
+.container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
 }
-
-.col {
-    width: 50%;
+.fa-brands {
+  color: #004754;
 }
-
-.align-items-center {
+.container span {
+  font-size: 12px;
+}
+.container a {
+  color: #333333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
+}
+.container button {
+    background-color: #bebd00;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    gap: 8px;
+  }
+
+  .container button svg {
+    width: 14px;
+    height: 14px;
+    stroke: white;
+  }
+.container button.hidden {
+  background-color: transparent;
+  border-color: #ffffff;
 }
 
-/* Style for the container of the text and button */
-.col.sign-in .form-wrapper {
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
-    height: 100%; /* Full height of the parent container */
-    text-align: center; /* Center the text */
-}
-
-/* Style for the button */
-.col.sign-in button {
-    background-color: #00c6ff; /* Bright blue background */
-    color: white; /* White text */
-    padding: 15px 40px; /* Larger padding for size */
-    border: none; /* Remove border */
-    border-radius: 8px; /* Rounded corners */
-    font-size: 18px; /* Larger font */
-    font-weight: bold;
-    width: auto; /* Adjust to content */
-    cursor: pointer; /* Pointer cursor */
-    transition: all 0.3s ease; /* Smooth hover effect */
-    margin-top: 20px; /* Increased space between text and button */
-}
-
-/* Hover effect for button */
-.col.sign-in button:hover {
-    background-color: #b740ff; /* Purple background */
-    transform: scale(1.05); /* Slight zoom-in */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
-}
-
-
-/* Optional: Center the button's parent paragraph for better alignment */
-.col.sign-in p {
-    text-align: center; /* Center the button inside its container */
-}
-
-.flex-col {
-    flex-direction: column;
-}
-
-.social-list {
-    margin: 2rem 0;
-    padding: 1rem;
-    border-radius: 1.5rem;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transform: scale(0);
-    transition: .5s ease-in-out;
-    transition-delay: 1.2s;
-}
-
-.social-list>div {
-    color: var(--white);
-    margin: 0 .5rem;
-    padding: .7rem;
-    cursor: pointer;
-    border-radius: .5rem;
-    cursor: pointer;
-    transform: scale(0);
-    transition: .5s ease-in-out;
-}
-
-.social-list>div:nth-child(1) {
-    transition-delay: 1.4s;
-}
-
-.social-list>div:nth-child(2) {
-    transition-delay: 1.6s;
-}
-
-.social-list>div:nth-child(3) {
-    transition-delay: 1.8s;
-}
-
-.social-list>div:nth-child(4) {
-    transition-delay: 2s;
-}
-
-.social-list>div>i {
-    font-size: 1.5rem;
-    transition: .4s ease-in-out;
-}
-
-.social-list>div:hover i {
-    transform: scale(1.5);
-}
-
-.facebook-bg {
-    background-color: var(--facebook-color);
-}
-
-.google-bg {
-    background-color: var(--google-color);
-}
-
-.twitter-bg {
-    background-color: var(--twitter-color);
-}
-
-.insta-bg {
-    background-color: var(--insta-color);
-}
-
-.pointer {
-    cursor: pointer;
-}
-
-.container.sign-in .form.sign-in,
-.container.sign-in .social-list.sign-in,
-.container.sign-in .social-list.sign-in>div,
-.container.sign-up .form.sign-up,
-.container.sign-up .social-list.sign-up,
-.container.sign-up .social-list.sign-up>div {
-    transform: scale(1);
-}
-
-.content-row {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 6;
-    width: 100%;
-}
-
-.text {
-    margin: 4rem;
-    color: var(--white);
-}
-
-.text h2 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin: 2rem 0;
-    transition: 1s ease-in-out;
-}
-
-.text p {
+.button-link {
+    background-color: #bebd00;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 0px;
     font-weight: 600;
-    transition: 1s ease-in-out;
-    transition-delay: .2s;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    justify-content: center;
+    width: fit-content;
+  }
+  
+  .button-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: white;
+  }
+  
+.container form {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
 }
 
-.img img {
-    width: 30vw;
-    transition: 1s ease-in-out;
-    transition-delay: .4s;
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
 }
 
-.text.sign-in h2,
-.text.sign-in p,
-.img.sign-in img {
-    transform: translateX(-250%);
+.form-container img {
+    max-width: 100%; /* Ensures the image doesn't overflow */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes extra space below inline images */
+    margin: 10px auto; /* Centers the image horizontally */
+    border-radius: 10px; /* Optional: gives slightly rounded corners */
+    object-fit: cover; /* Ensures image covers area without distortion */
+  }
+  
+.sign-in {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+.container.active .sign-in {
+  transform: translateX(100%);
+}
+.sign-up {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+.container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+@keyframes move {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
 }
 
-.text.sign-up h2,
-.text.sign-up p,
-.img.sign-up img {
-    transform: translateX(250%);
+.toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+.container.active .toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+.toggle {
+  background-color: #004754;
+  height: 100%;
+  background: linear-gradient(to right, #004754, #004754);
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+.container.active .toggle {
+  transform: translateX(50%);
+}
+.toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 30px;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+.toggle-left {
+  transform: translateX(-200%);
 }
 
-.container.sign-in .text.sign-in h2,
-.container.sign-in .text.sign-in p,
-.container.sign-in .img.sign-in img,
-.container.sign-up .text.sign-up h2,
-.container.sign-up .text.sign-up p,
-.container.sign-up .img.sign-up img {
-    transform: translateX(0);
+.container.active .toggle-left {
+  transform: translateX(0);
 }
 
-/* BACKGROUND */
-
-.container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 300vw;
-    transform: translate(35%, 0);
-    background-image: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    transition: 1s ease-in-out;
-    z-index: 6;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-bottom-right-radius: max(50vw, 50vh);
-    border-top-left-radius: max(50vw, 50vh);
+.toggle-right {
+  right: 0;
+  transform: translateX(0);
 }
 
-.container.sign-in::before {
-    transform: translate(0, 0);
-    right: 50%;
-}
-
-.container.sign-up::before {
-    transform: translate(100%, 0);
-    right: 50%;
-}
-
-/* RESPONSIVE */
-
-@media only screen and (max-width: 425px) {
-
-    .container::before,
-    .container.sign-in::before,
-    .container.sign-up::before {
-        height: 100vh;
-        border-bottom-right-radius: 0;
-        border-top-left-radius: 0;
-        z-index: 0;
-        transform: none;
-        right: 0;
-    }
-
-    /* .container.sign-in .col.sign-up {
-        transform: translateY(100%);
-    } */
-
-    .container.sign-in .col.sign-in,
-    .container.sign-up .col.sign-up {
-        transform: translateY(0);
-    }
-
-    .content-row {
-        align-items: flex-start !important;
-    }
-
-    .content-row .col {
-        transform: translateY(0);
-        background-color: unset;
-    }
-
-    .col {
-        width: 100%;
-        position: absolute;
-        padding: 2rem;
-        background-color: var(--white);
-        border-top-left-radius: 2rem;
-        border-top-right-radius: 2rem;
-        transform: translateY(100%);
-        transition: 1s ease-in-out;
-    }
-
-    .row {
-        align-items: flex-end;
-        justify-content: flex-end;
-    }
-
-    .form,
-    .social-list {
-        box-shadow: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .text {
-        margin: 0;
-    }
-
-    .text p {
-        display: none;
-    }
-
-    .text h2 {
-        margin: .5rem;
-        font-size: 2rem;
-    }
+.container.active .toggle-right {
+  transform: translateX(200%);
 }
