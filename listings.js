@@ -1,63 +1,64 @@
-const apiKey = 'YOUR_RESTDB_API_KEY'; // Replace with your RestDB API key
-const apiUrl = 'https://YOUR_RESTDB_NAME.restdb.io/rest/listings'; // Replace with your RestDB URL
-const listingsContainer = document.getElementById('listings-container');
-const pageTitle = document.getElementById('page-title');
+document.addEventListener("DOMContentLoaded", async function () {
+    const apiKey = "6785c0de630e8a0e140b141d"; // Replace with your RestDB API key
+    const databaseUrl = "https://mokesellasg2-66c7.restdb.io/rest/listings"; // Replace with your RestDB URL
+    const listingsContainer = document.getElementById("listings-container");
+    const pageTitle = document.getElementById("page-title");
 
-// Fetch Listings from RestDB
-async function fetchListings(category = null) {
+    // Get category from URL (if exists)
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedCategory = urlParams.get("category");
+
+    // Decode the category name in case it's URL encoded (e.g., "Furniture%20&%20Home%20Living")
+    const decodedCategory = selectedCategory ? decodeURIComponent(selectedCategory) : null;
+
+    console.log("🔍 Selected Category:", decodedCategory); // Debugging line
+
     try {
-        let url = apiUrl;
-        if (category) {
-            url += `?q=${encodeURIComponent(JSON.stringify({ category }))}`;
-        }
-
-        const response = await fetch(url, {
+        // Fetch data from RestDB
+        const response = await fetch(databaseUrl, {
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json',
-                'x-apikey': apiKey,
-            },
+                "x-apikey": apiKey,
+                "Cache-Control": "no-cache"
+            }
         });
 
-        if (!response.ok) {
-            throw new Error('Failed to fetch listings');
-        }
-
         const listings = await response.json();
-        displayListings(listings);
+
+        // Filter by category (if selected)
+        const filteredListings = decodedCategory
+            ? listings.filter(item => item.category.trim().toLowerCase() === decodedCategory.trim().toLowerCase())
+            : listings;
+
+        console.log("📄 Filtered Listings:", filteredListings); // Debugging line
+
+        // Update page title
+        pageTitle.textContent = decodedCategory ? `Listings for ${decodedCategory}` : "All Listings";
+
+        // Display listings
+        if (filteredListings.length === 0) {
+            listingsContainer.innerHTML = "<p>No listings found for this category.</p>";
+        } else {
+            listingsContainer.innerHTML = filteredListings.map(createListingCard).join("");
+        }
     } catch (error) {
-        console.error(error);
-        listingsContainer.innerHTML = '<p>Error loading listings. Please try again later.</p>';
+        console.error("⚠️ Error fetching listings:", error);
+        listingsContainer.innerHTML = "<p>Error loading listings. Please try again.</p>";
     }
+});
+
+// Function to generate listing card HTML
+function createListingCard(listing) {
+    return `
+        <div class="listing-card">
+            <img src="${listing.product_img ? listing.product_img[0] : 'placeholder.jpg'}" alt="${listing.product_name}">
+            <div class="listing-details">
+                <h3>${listing.product_name}</h3>
+                <p><strong>Price:</strong> $${listing.price.toFixed(2)}</p>
+                <p><strong>Category:</strong> ${listing.category}</p>
+                <p><strong>Description:</strong> ${listing.description}</p>
+                <p><strong>Contact:</strong> ${listing.user_email}, ${listing.phone_num}</p>
+            </div>
+        </div>
+    `;
 }
-
-// Display Listings in the DOM
-function displayListings(listings) {
-    listingsContainer.innerHTML = ''; // Clear existing listings
-
-    if (listings.length === 0) {
-        listingsContainer.innerHTML = '<p>No listings available.</p>';
-        return;
-    }
-
-    listings.forEach((listing) => {
-        const listingCard = document.createElement('div');
-        listingCard.classList.add('listing-card');
-
-        listingCard.innerHTML = `
-            <img src="${listing.images[0] || 'placeholder.jpg'}" alt="${listing.title}">
-            <h3>${listing.title}</h3>
-            <p>Price: $${listing.price}</p>
-            <p>Category: ${listing.category}</p>
-        `;
-
-        listingsContainer.appendChild(listingCard);
-    });
-}
-
-// Detect Category from URL and Load Listings
-const urlParams = new URLSearchParams(window.location.search);
-const category = urlParams.get('category');
-if (category) {
-    pageTitle.textContent = category;
-}
-fetchListings(category);

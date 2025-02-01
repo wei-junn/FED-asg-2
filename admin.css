@@ -1,13 +1,20 @@
-/* General Styling */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #00c6ff, #b740ff);
+    background: linear-gradient(135deg, #bebd00, #004754);
     color: #333;
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
@@ -21,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #00c6ff, #b740ff);
+    background: linear-gradient(135deg, #bebd00, #004754);
     color: #333;
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
@@ -46,7 +53,7 @@ nav {
 nav h1 {
     margin: 0;
     font-size: 36px;
-    color: #000;
+    color: #004754;
     font-weight: bold;
     text-align: center;
     flex-grow: 1;
@@ -179,7 +186,7 @@ form button {
     padding: 15px 20px;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(90deg, #00c6ff, #b740ff);
+    background: #bebd00;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
@@ -187,7 +194,7 @@ form button {
 }
 
 form button:hover {
-    background: linear-gradient(90deg, #0072ff, #a028e0);
+    background: #004754;
 }
 
 footer {

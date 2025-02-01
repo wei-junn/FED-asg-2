@@ -43,57 +43,91 @@ body {
   margin: 15px 0 10px;
 }
 .container button {
-    background-color: #bebd00;
-    color: #ffffff;
-    font-size: 12px;
-    padding: 10px 45px;
-    border: 1px solid transparent;
-    border-radius: 0px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  background-color: #bebd00;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Add transitions for smooth hover effects */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .container button svg {
-    width: 14px;
-    height: 14px;
-    stroke: white;
-  }
+.container button:hover {
+  /* Change background color on hover */
+  background-color: #004754;
+  /* Lift the button slightly */
+  transform: translateY(-2px);
+  /* Add a subtle shadow for a lifted effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the SVG inside the button */
+.container button svg {
+  width: 14px;
+  height: 14px;
+  stroke: white;
+}
+
+/* Styles for the "hidden" variant of the button */
 .container button.hidden {
   background-color: transparent;
   border-color: #ffffff;
+  /* Ensure the hidden button also animates on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.container button.hidden:hover {
+  /* For a transparent button, a subtle background tint on hover */
+  background-color: #bebd00;
+  /* Lift the button slightly */
+  transform: translateY(-2px);
+  color: #004754;
 }
 
 .button-link {
-    background-color: #bebd00;
-    color: #ffffff;
-    font-size: 12px;
-    padding: 10px 45px;
-    border: 1px solid transparent;
-    border-radius: 0px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    justify-content: center;
-    width: fit-content;
-  }
+  background-color: #bebd00;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Add transitions for smooth hover effects */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
   
-  .button-link svg {
-    width: 14px;
-    height: 14px;
-    stroke: white;
-  }
+.button-link:hover {
+  /* Change background color on hover */
+  background-color: #015665;
+  /* Lift the button slightly */
+  transform: translateY(-2px);
+  /* Add a subtle shadow for a lifted effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+/* Styling for the SVG inside the button */
+.button-link svg {
+  width: 14px;
+  height: 14px;
+  stroke: white;
+}
   
 .container form {
   background-color: #ffffff;

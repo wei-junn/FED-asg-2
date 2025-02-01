@@ -4,79 +4,68 @@ function toggleDropdown() {
         dropdownMenu.style.display === 'block' ? 'none' : 'block';
 }
 
-// Form submission event listener
-document.getElementById('listing-form').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Prevent default form submission
+async function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+}
 
-    // Gather form data
-    const productName = document.getElementById('product_name').value;
-    const productImages = document.getElementById('product_img').files;
-    const price = document.getElementById('price').value;
-    const description = document.getElementById('description').value;
-    const category = document.getElementById('category').value;
-    const phoneNum = document.getElementById('phone_num').value;
-    const userEmail = document.getElementById('user_email').value;
+document.getElementById("listing-form").addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-    // Ensure at least one image is uploaded
-    if (productImages.length === 0) {
-        alert('Please upload at least one product image.');
-        return;
-    }
+    // Get form values
+    const productName = document.getElementById("product_name").value;
+    const price = parseFloat(document.getElementById("price").value);
+    const description = document.getElementById("description").value;
+    const category = document.getElementById("category").value;
+    const phoneNum = parseInt(document.getElementById("phone_num").value, 10);
+    const userEmail = document.getElementById("user_email").value;
+    const productImages = document.getElementById("product_img").files;
 
-    // Upload images to Cloudinary (if using Cloudinary)
-    const imageUrls = [];
-    for (let i = 0; i < productImages.length; i++) {
-        const formData = new FormData();
-        formData.append('file', productImages[i]);
-        formData.append('upload_preset', 'your_upload_preset'); // Replace with your Cloudinary preset
+    // Convert images to Base64 (max 10)
+    const imagesBase64 = await Promise.all([...productImages].slice(0, 10).map(fileToBase64));
 
-        try {
-            const response = await fetch('https://api.cloudinary.com/v1_1/your_cloud_name/image/upload', {
-                method: 'POST',
-                body: formData,
-            });
-            const data = await response.json();
-            imageUrls.push(data.secure_url);
-        } catch (error) {
-            console.error('Error uploading image:', error);
-            alert('Failed to upload images. Please try again.');
-            return;
-        }
-    }
-
-    // Prepare listing data
-    const listingData = {
+    // Create request body
+    const requestBody = {
         product_name: productName,
-        product_img: imageUrls,
         price: price,
         description: description,
         category: category,
         phone_num: phoneNum,
         user_email: userEmail,
+        product_img: imagesBase64 // Store images as an array of Base64 strings
     };
 
-    // Post data to RestDB
+    console.log("📤 Sending JSON with Base64 images to RestDB:", requestBody);
+
+    const apiKey = "6785c0de630e8a0e140b141d"; // Replace with your RestDB API key
+    const databaseUrl = "https://mokesellasg2-66c7.restdb.io/rest/listings"; // Replace with your RestDB URL
+
     try {
-        const response = await fetch('https://mokesellasg2-66c7.restdb.io/rest/listings', {
-            method: 'POST',
+        const response = await fetch(databaseUrl, {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
-                'x-apikey': '6785c0de630e8a0e140b141d',
+                "Content-Type": "application/json",
+                "x-apikey": apiKey,
+                "Cache-Control": "no-cache"
             },
-            body: JSON.stringify(listingData),
+            body: JSON.stringify(requestBody)
         });
 
+        const responseData = await response.json();
+        console.log("📩 Response from RestDB:", responseData);
+
         if (response.ok) {
-            document.getElementById('listing-form').reset();
-            document.getElementById('success-animation').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('success-animation').style.display = 'none';
-            }, 3000);
+            alert("✅ Listing posted successfully!");
+            document.getElementById("listing-form").reset();
         } else {
-            alert('Failed to post the listing. Please try again.');
+            throw new Error("❌ Failed to post listing: " + JSON.stringify(responseData));
         }
     } catch (error) {
-        console.error('Error posting listing:', error);
-        alert('An error occurred. Please try again later.');
+        console.error("⚠️ Error:", error);
+        alert("⚠️ Error: " + error.message);
     }
 });
