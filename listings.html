@@ -12,16 +12,25 @@
         <h1>MokeSell</h1>
         <div class="nav-links">
             <a href="listings.html">All</a>
-            <a href="listings.html?category=Furniture & Home Living">Furniture</a>
+            <a href="listings.html?category=Furniture">Furniture</a>
             <a href="listings.html?category=Electronics">Electronics</a>
             <a href="listings.html?category=Clothes">Clothes</a>
             <a href="listings.html?category=Accessories">Accessories</a>            
             <a href="admin.html">Sell Items</a>
         </div>
     </nav>
-
     <!-- Main Content -->
     <main>
+        <!-- Filter Section -->
+    <div class="filter-container">
+        <label for="condition-filter">Filter by Condition:</label>
+        <select id="condition-filter">
+           <option value="all">All</option>
+           <option value="New">New</option>
+           <option value="Used">Used</option>
+       </select>
+   </div>    
+
         <h2 id="page-title">All Listings</h2>
         <div id="listings-container" class="flex-container">
             <!-- Listings will be dynamically populated here -->

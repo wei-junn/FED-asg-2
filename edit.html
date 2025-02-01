@@ -18,7 +18,7 @@
     <!-- Form Section -->
     <main>
         <section id="listing-form-section">
-            <h2>Create a New Listing</h2>
+            <h2>Edit Your Listing</h2>
             <form id="listing-form">
                 <label for="product_name">Product Name:</label>
                 <input type="text" id="product_name" name="product_name" required>
@@ -27,22 +27,14 @@
                 <input type="file" id="product_img" name="product_img" accept="image/*" multiple required>
 
                 <label for="price">Price (in $):</label>
-                <input type="number" id="price" name="price" step="0.01" min="0" required>
-
-                <!-- Condition Dropdown -->
-<label for="condition">Condition:</label>
-<select id="condition" name="condition" required>
-    <option value="New">New</option>
-    <option value="Used">Used</option>
-</select>
-
+                <input type="number" id="price" name="price" required>
 
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="5" required></textarea>
 
                 <label for="category">Category:</label>
                 <select id="category" name="category" required>
-                    <option value="Furniture">Furniture</option>
+                    <option value="Furniture & Home Living">Furniture</option>
                     <option value="Clothes">Clothes</option>
                     <option value="Accessories">Accessories</option>
                     <option value="Electronics">Electronics</option>

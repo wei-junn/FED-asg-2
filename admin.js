@@ -4,6 +4,7 @@ function toggleDropdown() {
         dropdownMenu.style.display === 'block' ? 'none' : 'block';
 }
 
+// Function to Convert File to Base64
 async function fileToBase64(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -17,12 +18,13 @@ document.getElementById("listing-form").addEventListener("submit", async functio
     event.preventDefault();
 
     // Get form values
-    const productName = document.getElementById("product_name").value;
-    const price = parseFloat(document.getElementById("price").value);
-    const description = document.getElementById("description").value;
-    const category = document.getElementById("category").value;
-    const phoneNum = parseInt(document.getElementById("phone_num").value, 10);
-    const userEmail = document.getElementById("user_email").value;
+    const productName = document.getElementById("product_name").value.trim();
+    const price = parseFloat(document.getElementById("price").value).toFixed(2);
+    const description = document.getElementById("description").value.trim();
+    const category = document.getElementById("category").value.trim();
+    const phoneNum = document.getElementById("phone_num").value.trim();
+    const userEmail = document.getElementById("user_email").value.trim();
+    const condition = document.getElementById("condition").value; // ✅ Get selected condition
     const productImages = document.getElementById("product_img").files;
 
     // Convert images to Base64 (max 10)
@@ -36,6 +38,7 @@ document.getElementById("listing-form").addEventListener("submit", async functio
         category: category,
         phone_num: phoneNum,
         user_email: userEmail,
+        condition: condition, // ✅ Ensure "condition" is included
         product_img: imagesBase64 // Store images as an array of Base64 strings
     };
 

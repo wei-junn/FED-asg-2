@@ -10,10 +10,6 @@ body {
     min-height: 100vh;
 }
 
-h1, h2 {
-    margin: 0;
-}
-
 /* Navigation Bar */
 nav {
     position: fixed;
@@ -21,9 +17,7 @@ nav {
     left: 0;
     width: 100%;
     background: linear-gradient(135deg, #bebd00, #004754);
-    padding: 25px 40px; /* Increased padding for more height */
-    height: 80px; /* Explicit height (adjust as needed) */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -31,67 +25,68 @@ nav {
     box-sizing: border-box;
 }
 
-/* Adjust the logo or title inside the nav */
-nav h1 {
-    font-size: 40px;
-    font-weight: bold;
-    margin: 0; /* Ensures no extra spacing */
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 15px;
 }
 
-/* Adjust nav links */
-nav .nav-links a {
+.nav-links a {
     color: white;
     text-decoration: none;
-    margin: 0 15px; /* Increased margin for spacing */
-    font-size: 20px;
-    font-weight: 600; /* Makes the text thicker */
+    font-size: 16px;
+    font-weight: 600;
     transition: color 0.3s;
 }
 
-nav .nav-links a:hover {
+.nav-links a:hover {
     color: #ffd700;
 }
 
-/* Ensure better spacing on smaller screens */
-@media screen and (max-width: 768px) {
-    nav {
-        padding: 20px; /* Slightly reduce padding for smaller screens */
-        height: auto;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav .nav-links {
-        margin-top: 10px;
-    }
-
-    nav .nav-links a {
-        font-size: 18px;
-        margin: 5px;
-    }
-}
-
-/* Ensuring main content does not overlap with navbar */
+/* Main Content */
 main {
     flex: 1;
-    padding: 120px 20px 20px; /* Increased top padding to push content below navbar */
+    padding: 120px 20px 20px; /* Default for large screens */
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Page Title */
 #page-title {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Flexbox for Listings */
+/* Filter Container */
+.filter-container {
+    margin-top: 20px; /* Extra margin so it doesn’t get hidden */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative; /* Prevents it from being overlapped */
+    z-index: 10;
+}
+
+/* Ensure filter is visible and aligned */
+.filter-container label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#condition-filter {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Listings Grid */
 .flex-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
-    margin-top: 10px;
 }
 
 /* Individual Listing Card */
@@ -99,12 +94,11 @@ main {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: calc(33.333% - 20px);
+    width: calc(33.333% - 20px); /* 3 columns on large screens */
     padding: 15px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    margin-top: 20px; /* Added margin to create spacing from top */
 }
 
 .listing-card:hover {
@@ -133,19 +127,96 @@ main {
     margin: 5px 0;
 }
 
-/* Responsive Design for Mobile */
-@media screen and (max-width: 768px) {
-    main {
-        padding: 100px 20px 20px; /* Adjusted padding for smaller screens */
+/* ---------------------------- */
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+/* ---------------------------- */
+
+/* Tablets (Max Width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .listing-card {
+        width: calc(50% - 20px); /* 2 columns */
     }
 
-    .listing-card {
-        width: calc(50% - 20px); /* Adjust width for smaller screens */
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        padding-top: 140px; /* More space for stacked navbar */
+    }
+
+    .filter-container {
+        justify-content: center;
+        margin-top: 60px;
     }
 }
 
+/* Mobile Devices (Max Width: 768px) */
+@media screen and (max-width: 768px) {
+    .listing-card {
+        width: 100%; /* 1 column */
+    }
+
+    .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 120px; /* Ensure it stays visible */
+    }
+
+    #condition-filter {
+        width: 100%; /* Make dropdown full width */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    main {
+        padding-top: 160px; /* Increase padding to move content below navbar */
+    }
+}
+
+/* Small Mobile (Max Width: 480px) */
 @media screen and (max-width: 480px) {
     .listing-card {
-        width: 100%; /* Make each card full width on very small screens */
+        width: 100%;
+        padding: 10px;
+    }
+
+    .filter-container {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin-top: 60px; /* Extra margin to make sure it doesn’t hide */
+    }
+
+    #condition-filter {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    nav {
+        padding: 15px;
+    }
+
+    nav h1 {
+        font-size: 22px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    main {
+        padding-top: 180px; /* Extra padding for very small screens */
     }
 }
