@@ -15,6 +15,20 @@
         </div>
     </nav>  
 
+    <!-- Full-Screen Lottie Animation Container (Initially Hidden) -->
+<div id="posting-animation" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255, 255, 255, 0.9); align-items: center; justify-content: center; z-index: 9999;">
+    <lottie-player 
+        id="posting-lottie"
+        src="images/Animation - posting loader.json"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px;"
+        loop
+        autoplay>
+    </lottie-player>
+</div>
+
+
     <!-- Form Section -->
     <main>
         <section id="listing-form-section">
@@ -30,12 +44,11 @@
                 <input type="number" id="price" name="price" step="0.01" min="0" required>
 
                 <!-- Condition Dropdown -->
-<label for="condition">Condition:</label>
-<select id="condition" name="condition" required>
-    <option value="New">New</option>
-    <option value="Used">Used</option>
-</select>
-
+                <label for="condition">Condition:</label>
+                <select id="condition" name="condition" required>
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                </select>
 
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="5" required></textarea>
@@ -46,7 +59,6 @@
                     <option value="Clothes">Clothes</option>
                     <option value="Accessories">Accessories</option>
                     <option value="Electronics">Electronics</option>
-                    <!-- Add more categories as needed -->
                 </select>
 
                 <label for="phone_num">Phone Number:</label>
@@ -60,10 +72,8 @@
         </section>
     </main>
 
-    <script src="admin.js"></script>
+    <!-- Scripts -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="admin.js"></script>
 </body>
-
-<footer>
-
-</footer>
+</html>

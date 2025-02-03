@@ -17,6 +17,15 @@ async function fileToBase64(file) {
 document.getElementById("listing-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
+    // Get references to animation and submit button
+    const postingAnimation = document.getElementById("posting-animation");
+    const submitButton = document.querySelector("form button");
+
+    // Hide the form & Show Full-Screen Lottie Animation
+    document.getElementById("listing-form-section").style.display = "none"; // Hide form
+    postingAnimation.style.display = "flex"; // Show loading animation
+    submitButton.disabled = true; // Disable button to prevent multiple clicks
+
     // Get form values
     const productName = document.getElementById("product_name").value.trim();
     const price = parseFloat(document.getElementById("price").value).toFixed(2);
@@ -24,7 +33,7 @@ document.getElementById("listing-form").addEventListener("submit", async functio
     const category = document.getElementById("category").value.trim();
     const phoneNum = document.getElementById("phone_num").value.trim();
     const userEmail = document.getElementById("user_email").value.trim();
-    const condition = document.getElementById("condition").value; // ✅ Get selected condition
+    const condition = document.getElementById("condition").value;
     const productImages = document.getElementById("product_img").files;
 
     // Convert images to Base64 (max 10)
@@ -38,8 +47,8 @@ document.getElementById("listing-form").addEventListener("submit", async functio
         category: category,
         phone_num: phoneNum,
         user_email: userEmail,
-        condition: condition, // ✅ Ensure "condition" is included
-        product_img: imagesBase64 // Store images as an array of Base64 strings
+        condition: condition,
+        product_img: imagesBase64
     };
 
     console.log("📤 Sending JSON with Base64 images to RestDB:", requestBody);
@@ -63,12 +72,20 @@ document.getElementById("listing-form").addEventListener("submit", async functio
 
         if (response.ok) {
             alert("✅ Listing posted successfully!");
-            document.getElementById("listing-form").reset();
+            
+            setTimeout(() => {
+                window.location.href = "index.html"; // Redirect to home page
+            }, 100);
         } else {
             throw new Error("❌ Failed to post listing: " + JSON.stringify(responseData));
         }
     } catch (error) {
         console.error("⚠️ Error:", error);
         alert("⚠️ Error: " + error.message);
+
+        // Hide Lottie Animation & Re-enable Form on Error
+        postingAnimation.style.display = "none";
+        document.getElementById("listing-form-section").style.display = "block"; // Show form again
+        submitButton.disabled = false;
     }
 });
