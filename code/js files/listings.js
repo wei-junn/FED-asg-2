@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "/images/Animation - 1738385306623.json"
+        path: "/code/images/Animation - 1738385306623.json"
     });
 
     // Get URL parameters (category & condition)
