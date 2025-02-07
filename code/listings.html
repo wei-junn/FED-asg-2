@@ -14,28 +14,36 @@
     <nav>
         <h1>MokeSell</h1>
         <div class="nav-links">
-            <a href="/code/listings.html">All</a>
-            <a href="/code/listings.html?category=Furniture">Furniture</a>
-            <a href="/code/listings.html?category=Electronics">Electronics</a>
-            <a href="/code/listings.html?category=Clothes">Clothes</a>
-            <a href="/code/listings.html?category=Accessories">Accessories</a>            
+            <a href="/code/listings.html">View Listings</a>     
             <a href="/code/admin.html">Sell Items</a>
+            <a href="/code/auth.html">Log Out</a>
         </div>
     </nav>
 
     <!-- Main Content -->
     <main>
         <!-- Filter Section -->
-        <div class="filter-container">
-            <label for="condition-filter">Filter by Condition:</label>
-            <select id="condition-filter">
-               <option value="all">All</option>
-               <option value="New">New</option>
-               <option value="Used">Used</option>
-           </select>
-       </div>    
+<div class="filters-wrapper">
+    <h2 id="page-title">All Listings</h2>
+    <label for="condition-filter">Filter by Condition:</label>
+    <select id="condition-filter">
+       <option value="all">All</option>
+       <option value="New">New</option>
+       <option value="Used">Used</option>
+   </select>
 
-        <h2 id="page-title">All Listings</h2>
+    <!-- Category Filter -->
+<div class="filter-container">
+    <label for="category-filter">Filter by Category:</label>
+    <select id="category-filter">
+        <option value="All">All</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothes">Clothes</option>
+        <option value="Accessories">Accessories</option>
+    </select>
+</div>
+</div>
 
         <!-- Listings Section -->
         <div id="listings-container" class="flex-container">

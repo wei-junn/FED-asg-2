@@ -45,56 +45,106 @@ nav {
 
 /* Main Content */
 main {
+    margin-top: 100px;
     flex: 1;
-    padding: 120px 20px 20px; /* Default for large screens */
+    padding: 120px 20px 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Ensure Checkboxes Appear on Separate Lines */
+.checkbox-group {
+    display: flex;
+    flex-direction: column; /* Stack checkboxes vertically */
+    gap: 10px; /* Increase spacing between checkboxes */
+    margin-top: 5px;
+}
+
+/* Move Listings Header Inside Sidebar */
 #page-title {
-    font-size: 24px;
-    margin-bottom: 20px;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
 }
 
 /* Filter Container */
 .filter-container {
-    margin-top: 20px; /* Extra margin so it doesn’t get hidden */
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 10px;
-    position: relative; /* Prevents it from being overlapped */
+    position: relative;
     z-index: 10;
 }
 
-/* Ensure filter is visible and aligned */
+/* Ensure filter labels and inputs are aligned properly */
 .filter-container label {
     font-size: 16px;
     font-weight: bold;
 }
 
-#condition-filter {
-    padding: 8px 12px;
+/* Filter Container */
+.condition-filter {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure filter labels and inputs are aligned properly */
+.condition-filter label {
     font-size: 16px;
+    font-weight: bold;
+}
+
+/* Sidebar Styling */
+.filters-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 250px; /* Sidebar width */
+    margin-top: 50px; /* Adjust spacing to align with page */
+}
+
+/* Listings Grid - 3 Columns by Default */
+.flex-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+    justify-content: center;
+}
+
+/* ====== Category Filter Styling ====== */
+#category-filter {
+    font-size: 16px;
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* Listings Grid */
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+/* ====== Condition Filter Styling (Same as Category) ====== */
+#condition-filter {
+    font-size: 16px; /* Same font size as category filter */
+    padding: 8px 12px; /* Same padding */
+    border: 1px solid #ccc; /* Same border style */
+    border-radius: 5px; /* Same rounded corners */
+    cursor: pointer; /* Ensures the cursor appears as pointer */
 }
+
 
 /* Individual Listing Card */
 .listing-card {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: calc(33.333% - 20px); /* 3 columns on large screens */
     padding: 15px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -131,10 +181,42 @@ main {
 /* MEDIA QUERIES FOR RESPONSIVENESS */
 /* ---------------------------- */
 
-/* Tablets (Max Width: 1024px) */
+/* Default Layout (Desktop & Large Screens) */
+@media screen and (min-width: 1025px) {
+    main {
+        display: flex;
+        flex-direction: row; /* Sidebar on left, listings on right */
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .filters-wrapper {
+        display: flex;
+        flex-direction: column; /* Keep filters stacked */
+        align-items: flex-start; /* Align filters to left */
+        width: 250px; /* Sidebar width */
+        position: relative;
+        padding: 15px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #page-title {
+        margin-top: 20px; /* Adjust spacing below navbar */
+        text-align: left;
+        font-size: 24px;
+    }
+
+    #listings-container {
+        flex-grow: 1;
+    }
+}
+
+/* Tablets (Max Width: 1024px) - Move Filters Below Page Title */
 @media screen and (max-width: 1024px) {
-    .listing-card {
-        width: calc(50% - 20px); /* 2 columns */
+    .flex-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
     }
 
     nav {
@@ -148,60 +230,87 @@ main {
     }
 
     main {
-        padding-top: 140px; /* More space for stacked navbar */
+        padding-top: 140px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .filter-container {
+    #page-title {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 22px;
+    }
+
+    .filters-wrapper {
+        display: flex;
+        flex-direction: row; /* Arrange filters side by side */
         justify-content: center;
-        margin-top: 60px;
-    }
-}
-
-/* Mobile Devices (Max Width: 768px) */
-@media screen and (max-width: 768px) {
-    .listing-card {
-        width: 100%; /* 1 column */
-    }
-
-    .filter-container {
-        flex-direction: column;
-        align-items: flex-start;
+        gap: 15px;
         width: 100%;
-        margin-top: 120px; /* Ensure it stays visible */
+        background: none;
+        box-shadow: none;
+        padding: 0;
     }
 
-    #condition-filter {
-        width: 100%; /* Make dropdown full width */
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
+    .filter-container, #condition-filter {
+        flex: 1;
+        width: auto;
         text-align: center;
     }
+}
 
-    main {
-        padding-top: 160px; /* Increase padding to move content below navbar */
+/* Mobile Devices (Max Width: 768px) - Filters Below Page Title */
+@media screen and (max-width: 768px) {
+    .flex-container {
+        grid-template-columns: 1fr; /* 1 column */
+    }
+
+    #page-title {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 22px;
+    }
+
+    .filters-wrapper {
+        display: flex;
+        flex-direction: row; /* Arrange filters side by side */
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+        margin-top: 15px;
+        background: none;
+        box-shadow: none;
+    }
+
+    .filter-container, #condition-filter {
+        flex: 1;
+        width: 45%; /* Ensure they take equal space */
+        text-align: center;
     }
 }
 
-/* Small Mobile (Max Width: 480px) */
+/* Small Mobile (Max Width: 480px) - Stack Filters Vertically */
 @media screen and (max-width: 480px) {
-    .listing-card {
-        width: 100%;
-        padding: 10px;
+    .flex-container {
+        grid-template-columns: 1fr;
     }
 
-    .filter-container {
+    #page-title {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .filters-wrapper {
+        flex-direction: column; /* Stack filters vertically */
         align-items: center;
         text-align: center;
-        width: 100%;
-        margin-top: 60px; /* Extra margin to make sure it doesn’t hide */
+        gap: 10px;
     }
 
-    #condition-filter {
-        font-size: 14px;
-        padding: 6px 10px;
+    .filter-container, #condition-filter {
+        width: 100%;
     }
 
     nav {
@@ -217,6 +326,6 @@ main {
     }
 
     main {
-        padding-top: 180px; /* Extra padding for very small screens */
+        padding-top: 160px;
     }
 }

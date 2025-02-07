@@ -33,31 +33,54 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Navigation Bar */
+/* ====== Navigation Bar Styling ====== */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background: #fff;
-    padding: 20px 40px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 35px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 100;
+    z-index: 1000;
     box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Centered MokeSell Logo */
-nav h1 {
-    margin: 0;
-    font-size: 36px;
-    color: #004754;
+/* ====== Logo Styling ====== */
+nav #logo {
+    font-size: 30px;
     font-weight: bold;
-    text-align: center;
-    flex-grow: 1;
+    color: #004754;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
+
+nav #logo:hover {
+    color: #bebd00;
+}
+
+/* ====== Navigation Links ====== */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #004754;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.nav-links a:hover {
+    color: #bebd00;
+    transform: scale(1.1);
+}
+
 
 /* Burger Menu Icon */
 .burger-menu {
@@ -225,107 +248,101 @@ footer {
     color: #fff;
 }
 
-/* Media Queries */
-
-/* Tablets and Small Laptops (width <= 1024px) */
+/* ============================== */
+/* Tablets and Small Laptops (<= 1024px) */
+/* ============================== */
 @media (max-width: 1024px) {
-    nav h1 {
-        font-size: 30px;
-    }
-
-    nav .view-listings-btn {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    #listing-form-section {
-        padding: 40px 20px;
-        margin-top: 120px;
-    }
-
-    form {
-        grid-template-columns: 1fr;
-    }
-
-    form textarea,
-    form button {
-        grid-column: span 1;
-    }
-}
-
-/* Mobile Devices (width <= 768px) */
-@media (max-width: 768px) {
     nav {
         flex-direction: column; /* Stack items vertically */
         align-items: center;
-        padding: 20px 20px;
-    }
-
-    nav h1 {
-        font-size: 24px;
         text-align: center;
-        margin-bottom: 10px; /* Add spacing below the logo */
-    }
-
-    nav .view-listings-btn {
-        margin-left: 0; /* Remove left margin */
-        width: 100%; /* Full width button for mobile */
-        text-align: center;
-    }
-
-    #listing-form-section {
-        padding: 30px 15px;
-        margin-top: 100px;
-    }
-
-    form {
-        gap: 15px;
         padding: 15px;
     }
 
-    form input,
-    form select,
-    form textarea,
-    form button {
-        padding: 12px;
-        font-size: 14px;
+    nav #logo {
+        font-size: 28px; /* Reduce logo size */
     }
 
-    footer {
-        font-size: 12px;
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        padding: 8px 12px;
     }
 }
 
-/* Small Mobile Devices (width <= 480px) */
+/* ============================== */
+/* Mobile Devices (<= 768px) */
+/* ============================== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav #logo {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    /* Create a collapsible menu */
+    .nav-links {
+        display: none; /* Hide menu initially */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when toggled */
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Hamburger Menu Icon */
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
+    }
+}
+
+/* ============================== */
+/* Small Mobile Devices (<= 480px) */
+/* ============================== */
 @media (max-width: 480px) {
-    nav h1 {
+    nav {
+        padding: 10px;
+    }
+
+    nav #logo {
         font-size: 20px;
     }
 
-    nav .view-listings-btn {
+    .menu-icon {
+        font-size: 22px;
+    }
+
+    .nav-links a {
         font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    #listing-form-section {
-        padding: 20px 10px;
-        margin-top: 80px;
-    }
-
-    form {
-        gap: 10px;
-        padding: 10px;
-    }
-
-    form input,
-    form select,
-    form textarea,
-    form button {
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    footer {
-        font-size: 10px;
+        padding: 8px;
     }
 }
