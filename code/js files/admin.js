@@ -26,13 +26,22 @@ document.getElementById("listing-form").addEventListener("submit", async functio
     postingAnimation.style.display = "flex"; // Show loading animation
     submitButton.disabled = true; // Disable button to prevent multiple clicks
 
+    // Get logged-in user email (from localStorage)
+    const loggedInUserEmail = localStorage.getItem("user_email");
+    if (!loggedInUserEmail) {
+        alert("❌ Please log in to post a listing.");
+        postingAnimation.style.display = "none"; // Hide animation if login is required
+        document.getElementById("listing-form-section").style.display = "block"; // Show form again
+        submitButton.disabled = false;
+        return;
+    }
+
     // Get form values
     const productName = document.getElementById("product_name").value.trim();
     const price = parseFloat(document.getElementById("price").value).toFixed(2);
     const description = document.getElementById("description").value.trim();
     const category = document.getElementById("category").value.trim();
     const phoneNum = document.getElementById("phone_num").value.trim();
-    const userEmail = document.getElementById("user_email").value.trim();
     const condition = document.getElementById("condition").value;
     const productImages = document.getElementById("product_img").files;
 
@@ -46,7 +55,7 @@ document.getElementById("listing-form").addEventListener("submit", async functio
         description: description,
         category: category,
         phone_num: phoneNum,
-        user_email: userEmail,
+        user_email: loggedInUserEmail, // Attach logged-in user's email
         condition: condition,
         product_img: imagesBase64
     };
@@ -72,9 +81,9 @@ document.getElementById("listing-form").addEventListener("submit", async functio
 
         if (response.ok) {
             alert("✅ Listing posted successfully!");
-            
+
             setTimeout(() => {
-                window.location.href = "index.html"; // Redirect to home page
+                window.location.href = "account.html"; // Redirect to user account page
             }, 100);
         } else {
             throw new Error("❌ Failed to post listing: " + JSON.stringify(responseData));

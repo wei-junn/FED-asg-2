@@ -7,20 +7,40 @@
     <link rel="stylesheet" href="/code/css files/listing-details.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
-        <h1><a href="/code/index.html">MokeSell</a></h1>
+        <h1>Mokesell</h1>
         <div class="nav-links">
-            <a href="/code/listings.html">Back to Listings</a>
+            <a href="/code/listings.html">View Listings</a>     
             <a href="/code/admin.html">Sell Items</a>
-            <a href="/code/auth.html">Log Out</a>            
+            <a href="/code/account.html">My Listings</a>
+            <a href="/code/auth.html">Log Out</a>
         </div>
     </nav>
 
-    <!-- Listing Details Section -->
-    <main id="listing-details-container">
-        <h2>Loading listing details...</h2>
-    </main>
+    <a href="/code/listings.html" class="back-button">Back to Listings</a>
+
+    <div class="listing-container">
+        <!-- Left: Image -->
+        <div class="image-container">
+            <img id="listing-image" src="placeholder.jpg" alt="Item picture">
+        </div>
+
+        <!-- Right: Details -->
+        <div class="details-container">
+            <h2 id="listing-name">Item Name</h2>
+            <p class="price" id="listing-price">Price</p>
+            <p><strong>Item description:</strong></p>
+            <textarea class="description" id="listing-description" readonly></textarea>
+
+            <div class="contact-section">
+                <p>Contact the seller:</p>
+                <div class="contact-buttons">
+                    <a id="seller-phone" href="#">Phone Number</a>
+                    <a id="seller-email" href="#">Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="/code/js files/listing-details.js"></script>
 </body>

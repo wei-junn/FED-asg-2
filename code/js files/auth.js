@@ -79,25 +79,30 @@ function logIn(event) {
     .then(response => response.json())
     .then(data => {
         if (data.length > 0) {
-            alert("Login successful!");
-            localStorage.setItem("loggedInUser", JSON.stringify(data[0])); 
-            window.location.href = "listings.html"; // Redirect to listings page
+            alert("✅ Login successful!");
+
+            // Store user email in localStorage
+            localStorage.setItem("user_email", data[0]["user-email"]);
+
+            // Redirect to `listings.html` instead of `account.html`
+            window.location.href = "listings.html";
         } else {
-            alert("Invalid email or password. Try again.");
+            alert("❌ Invalid email or password. Try again.");
         }
     })
     .catch(error => {
         console.error("Login Error:", error);
-        alert("Login failed. Try again.");
+        alert("⚠️ Login failed. Try again.");
     });
 }
 
 // Logout Function
 function logOut() {
-    localStorage.removeItem("loggedInUser");
-    alert("Logged out successfully.");
-    window.location.href = "auth.html";
+    localStorage.removeItem("user_email");
+    alert("✅ Logged out successfully.");
+    window.location.href = "auth.html"; // Redirect to login page
 }
+
 
 // Protect Pages (Redirect if Not Logged In)
 function checkAuth() {
