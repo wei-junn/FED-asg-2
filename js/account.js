@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Redirect to login if user is not logged in
     const loggedInUserEmail = localStorage.getItem("user_email");
     if (!loggedInUserEmail) {
-        window.location.href = "../index.html";
+        window.location.href = "index.html";
         return;
     }
 
@@ -176,5 +176,5 @@ async function deleteListing(id) {
 
 // Function to edit a listing
 function editListing(id) {
-    window.location.href = `../html/edit.html?id=${id}`;
+    window.location.href = `edit.html?id=${id}`;
 }
