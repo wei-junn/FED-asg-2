@@ -4,16 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post New Listing - MokeSell</title>
-    <link rel="stylesheet" href="/code/css files/edit.css">
+    <link rel="stylesheet" href="/css files/edit.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+        /* Loader Styles */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav>
         <h1>MokeSell</h1>
         <div class="nav-links">
-            <a href="/code/listings.html">View Listings</a>            
+            <a href="/code/listings.html">View Listings</a>     
+            <a href="/code/admin.html">Sell Items</a>
+            <a href="/code/account.html">My Listings</a>
+            <a href="/index.html">Log Out</a>
         </div>
-    </nav>  
+    </nav>
 
     <!-- Form Section -->
     <main>
@@ -24,10 +46,17 @@
                 <input type="text" id="product_name" name="product_name" required>
 
                 <label for="product_img">Product Images (up to 10):</label>
-                <input type="file" id="product_img" name="product_img" accept="image/*" multiple required>
+                <input type="file" id="product_img" name="product_img" accept="image/*" multiple>
 
                 <label for="price">Price (in $):</label>
                 <input type="number" id="price" name="price" required>
+
+                <!-- Condition Dropdown -->
+                <label for="condition">Condition:</label>
+                <select id="condition" name="condition" required>
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                </select>
 
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="5" required></textarea>
@@ -38,7 +67,6 @@
                     <option value="Clothes">Clothes</option>
                     <option value="Accessories">Accessories</option>
                     <option value="Electronics">Electronics</option>
-                    <!-- Add more categories as needed -->
                 </select>
 
                 <label for="phone_num">Phone Number:</label>
@@ -47,14 +75,21 @@
                 <label for="user_email">Email:</label>
                 <input type="email" id="user_email" name="user_email" required>
 
-                <button type="submit">Post Listing</button>
+                <button type="submit">Save Changes</button>
             </form>
         </section>
     </main>
 
-    <script src="/code/js files/edit.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loader = document.getElementById("loader");
+            loader.classList.remove("hidden");
+            
+            window.addEventListener("load", function () {
+                loader.classList.add("hidden");
+            });
+        });
+    </script>
+    <script src="/js files/edit.js"></script>
 </body>
-
-<footer>
-
-</footer>
+</html>

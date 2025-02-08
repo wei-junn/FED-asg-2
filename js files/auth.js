@@ -49,7 +49,7 @@ function signUp(event) {
     .then((data) => {
         alert("Sign up successful! Redirecting to listings...");
         localStorage.setItem("loggedInUser", JSON.stringify(data)); // Store user session
-        window.location.href = "listings.html"; // Redirect to listings page
+        window.location.href = "../code/listings.html"; // Redirect to listings page
     })
     .catch(error => {
         console.error("Sign Up Error:", error);
@@ -85,7 +85,7 @@ function logIn(event) {
             localStorage.setItem("user_email", data[0]["user-email"]);
 
             // Redirect to `listings.html` instead of `account.html`
-            window.location.href = "listings.html";
+            window.location.href = "../code/listings.html";
         } else {
             alert("❌ Invalid email or password. Try again.");
         }
@@ -100,7 +100,7 @@ function logIn(event) {
 function logOut() {
     localStorage.removeItem("user_email");
     alert("✅ Logged out successfully.");
-    window.location.href = "auth.html"; // Redirect to login page
+    window.location.href = "../index.html"; // Redirect to login page
 }
 
 
@@ -108,6 +108,6 @@ function logOut() {
 function checkAuth() {
     const user = localStorage.getItem("loggedInUser");
     if (!user) {
-        window.location.href = "auth.html";
+        window.location.href = "../index.html";
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Listings - MokeSell</title>
-    <link rel="stylesheet" href="/code/css files/account.css">
+    <link rel="stylesheet" href="/css files/account.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
@@ -16,11 +16,12 @@
             <a href="/code/listings.html">View Listings</a>     
             <a href="/code/admin.html">Sell Items</a>
             <a href="/code/account.html">My Listings</a>
-            <a href="/code/auth.html">Log Out</a>
+            <a href="/index.html">Log Out</a>
         </div>
     </nav>
 
     <main>
+        <h2 id="page-title">My Listings</h2>
         <!-- Filter Section -->
 <div class="filters-wrapper">
     <label for="condition-filter">Filter by Condition:</label>
@@ -43,21 +44,20 @@
 </div>
 </div>
     
-        <h2>My Listings</h2>
         <div id="user-listings-container">
             <!-- User listings will be dynamically loaded here -->
         </div>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
-    <script src="/code/js files/listings.js"></script>
-    <script src="/code/js files/account.js"></script>
+    <script src="/js files/listings.js"></script>
+    <script src="/js files/account.js"></script>
     <script>
         // Logout functionality
         document.getElementById("logout").addEventListener("click", function () {
             localStorage.removeItem("user_email");
             alert("✅ Logged out successfully!");
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         });
     </script>
 </body>

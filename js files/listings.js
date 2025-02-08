@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "/code/images/Animation - 1738385306623.json" // Ensure correct path
+        path: "/images/Animation - 1738385306623.json" // Ensure correct path
     });
 
     try {
@@ -65,6 +65,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         const listings = await response.json();
+
+        // Sort listings by most recent first (Assuming 'createdAt' exists in RestDB)
+        listings.sort((a, b) => new Date(b._created) - new Date(a._created));
 
         // Remove the loading animation when data is loaded
         document.body.removeChild(loadingContainer);
@@ -138,7 +141,7 @@ function createListingCard(listing) {
 
 // Redirect function for clicking on a listing
 function viewListing(id) {
-    window.location.href = `listing-details.html?id=${id}`;
+    window.location.href = `../code/listing-details.html?id=${id}`;
 }
 
 // Event Listener for Category Change
