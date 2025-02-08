@@ -20,26 +20,24 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Create a loading animation container
     const loadingContainer = document.createElement("div");
     loadingContainer.id = "loading-animation";
-
-    // Center the animation & adjust size
     loadingContainer.style.display = "flex";
     loadingContainer.style.justifyContent = "center";
     loadingContainer.style.alignItems = "center";
-    loadingContainer.style.height = "100vh"; // Full viewport height
-    loadingContainer.style.width = "100%"; // Full width
+    loadingContainer.style.height = "100vh";
+    loadingContainer.style.width = "100%";
     loadingContainer.style.position = "absolute";
     loadingContainer.style.top = "0";
     loadingContainer.style.left = "0";
-    loadingContainer.style.background = "#fff"; // Background to cover everything
+    loadingContainer.style.background = "#fff";
 
     // Create an inner div to contain the animation & reduce size
     const animationWrapper = document.createElement("div");
-    animationWrapper.style.width = "200px"; // Adjust width
-    animationWrapper.style.height = "200px"; // Adjust height
+    animationWrapper.style.width = "200px";
+    animationWrapper.style.height = "200px";
 
     // Append animation wrapper to the loading container
     loadingContainer.appendChild(animationWrapper);
-    document.body.appendChild(loadingContainer); // Append to body to fully overlay
+    document.body.appendChild(loadingContainer);
 
     // Load Lottie Animation
     const animation = lottie.loadAnimation({
@@ -66,8 +64,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const listings = await response.json();
 
-        // Sort listings by most recent first (Assuming 'createdAt' exists in RestDB)
-        listings.sort((a, b) => new Date(b._created) - new Date(a._created));
+        // Sort listings by most recent first (Higher ID first)
+        listings.sort((a, b) => b._id.localeCompare(a._id));
 
         // Remove the loading animation when data is loaded
         document.body.removeChild(loadingContainer);
