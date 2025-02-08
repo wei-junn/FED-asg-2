@@ -176,5 +176,5 @@ async function deleteListing(id) {
 
 // Function to edit a listing
 function editListing(id) {
-    window.location.href = `../code/edit.html?id=${id}`;
+    window.location.href = `../html/edit.html?id=${id}`;
 }

@@ -83,7 +83,7 @@ document.getElementById("listing-form").addEventListener("submit", async functio
             alert("✅ Listing posted successfully!");
 
             setTimeout(() => {
-                window.location.href = "../code/account.html"; // Redirect to user account page
+                window.location.href = "../html/account.html"; // Redirect to user account page
             }, 100);
         } else {
             throw new Error("❌ Failed to post listing: " + JSON.stringify(responseData));

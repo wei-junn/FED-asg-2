@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Listings - MokeSell</title>
-    <link rel="stylesheet" href="/css files/account.css">
+    <title>Listings - MokeSell</title>
+    <link rel="stylesheet" href="/css/listings.css">
+
+    <!-- Lottie Player Script -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-
     <!-- Navigation Bar -->
     <nav>
         <h1>MokeSell</h1>
         <div class="nav-links">
-            <a href="/code/listings.html">View Listings</a>     
-            <a href="/code/admin.html">Sell Items</a>
-            <a href="/code/account.html">My Listings</a>
+            <a href="/html/listings.html">View Listings</a>     
+            <a href="/html/admin.html">Sell Items</a>
+            <a href="/html/account.html">My Listings</a>
             <a href="/index.html">Log Out</a>
         </div>
     </nav>
 
+    <!-- Main Content -->
     <main>
-        <h2 id="page-title">My Listings</h2>
         <!-- Filter Section -->
 <div class="filters-wrapper">
+    <h2 id="page-title">All Listings</h2>
     <label for="condition-filter">Filter by Condition:</label>
     <select id="condition-filter">
        <option value="all">All</option>
@@ -43,22 +45,15 @@
     </select>
 </div>
 </div>
-    
-        <div id="user-listings-container">
-            <!-- User listings will be dynamically loaded here -->
+
+        <!-- Listings Section -->
+        <div id="listings-container" class="flex-container">
+            <!-- Listings will be dynamically populated here -->
         </div>
     </main>
 
+    <!-- Load Lottie Web BEFORE listings.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
-    <script src="/js files/listings.js"></script>
-    <script src="/js files/account.js"></script>
-    <script>
-        // Logout functionality
-        document.getElementById("logout").addEventListener("click", function () {
-            localStorage.removeItem("user_email");
-            alert("✅ Logged out successfully!");
-            window.location.href = "index.html";
-        });
-    </script>
+    <script src="/js/listings.js"></script>
 </body>
 </html>
