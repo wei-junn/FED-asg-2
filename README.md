@@ -48,18 +48,6 @@ Create a JavaScript-powered chat interface with real-time updates using polling 
 For the review system, create a JavaScript form that posts review data to a RestDB collection (reviews).
 Display transaction completion and review success with Lottie animations.
 
-4. Feedback and Support:
-Feature Set:
-
-Feedback Submission: Users can submit categorized feedback.
-Support Staff Rating: Users can rate the response after feedback is handled.
-Implementation Details:
-
-Create a feedback form that submits data to a RestDB collection (feedback) with fields: userID, category, feedbackText, status.
-Allow admins (support staff) to update the feedback status via a simple admin interface.
-After feedback is marked as resolved, prompt the user to rate the support response using a JavaScript modal.
-Use a fun Lottie animation upon successful feedback submission and resolution.
-Technical Details
 
 Technology Usage 
 1. Database Integration:
@@ -72,8 +60,6 @@ feedback (for user feedback submissions)
 
 2. API Usage:
 RestDB API for CRUD operations on all collections.
-Stripe API for handling payments for listing bumps.
-Cloudinary API for image uploads to ensure fast loading and scalability.
 Lottie API or hosted Lottie animations for interactive feedback and visual enhancements.
 
 3. JavaScript Interactions:
@@ -97,3 +83,5 @@ Use GitHub for version control, with meaningful commit messages and a well-docum
 Bonus Features (Optional Enhancements):
 Dark Mode toggle for better user experience.
 Store media files (images) using Cloudinary.
+
+Github Pages Link: https://wei-junn.github.io/FED-asg-2/index.html

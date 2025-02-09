@@ -49,7 +49,7 @@ function signUp(event) {
     .then((data) => {
         alert("Sign up successful! Redirecting to listings...");
         localStorage.setItem("loggedInUser", JSON.stringify(data)); // Store user session
-        window.location.href = "./listings.html"; // Redirect to listings page
+        window.location.href = "listings.html"; // Redirect to listings page
     })
     .catch(error => {
         console.error("Sign Up Error:", error);

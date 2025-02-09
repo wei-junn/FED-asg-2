@@ -278,50 +278,23 @@ footer {
 /* ============================== */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
+        flex-direction: column; /* Stack items vertically */
         align-items: center;
         text-align: center;
         padding: 15px;
     }
 
     nav #logo {
-        font-size: 24px;
-        margin-bottom: 10px;
+        font-size: 28px; /* Reduce logo size */
     }
 
-    /* Create a collapsible menu */
     .nav-links {
-        display: none; /* Hide menu initially */
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        gap: 10px;
-    }
-
-    .nav-links.active {
-        display: flex; /* Show when toggled */
+        gap: 15px;
     }
 
     .nav-links a {
         font-size: 16px;
-        padding: 10px;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 5px;
-        transition: background 0.3s;
-    }
-
-    .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Hamburger Menu Icon */
-    .menu-icon {
-        display: block;
-        font-size: 24px;
-        color: white;
-        cursor: pointer;
-        padding: 10px;
+        padding: 8px 12px;
     }
 }
 
@@ -330,19 +303,22 @@ footer {
 /* ============================== */
 @media (max-width: 480px) {
     nav {
-        padding: 10px;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        text-align: center;
+        padding: 15px;
     }
 
     nav #logo {
-        font-size: 20px;
+        font-size: 28px; /* Reduce logo size */
     }
 
-    .menu-icon {
-        font-size: 22px;
+    .nav-links {
+        gap: 15px;
     }
 
     .nav-links a {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 16px;
+        padding: 8px 12px;
     }
 }

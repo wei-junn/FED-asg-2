@@ -84,6 +84,14 @@ body {
   height: 100%;
   transition: all 0.6s ease-in-out;
 }
+.form-container img {
+  max-width: 100%; /* Ensures the image doesn't overflow */
+  height: auto; /* Maintains aspect ratio */
+  display: block; /* Removes extra space below inline images */
+  margin: 10px auto; /* Centers the image horizontally */
+  border-radius: 10px; /* Optional: gives slightly rounded corners */
+  object-fit: cover; /* Ensures image covers area without distortion */
+}
 .sign-in {
   left: 0;
   width: 50%;
