@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "FED-asg-2/images/Animation%20-%201738385306623.json" // Ensure correct path
+        path: "./images/Animation%20-%201738385306623.json" // Ensure correct path
     });
 
     try {
@@ -139,7 +139,7 @@ function createListingCard(listing) {
 
 // Redirect function for clicking on a listing
 function viewListing(id) {
-    window.location.href = `../listing-details.html?id=${id}`;
+    window.location.href = `./listing-details.html?id=${id}`;
 }
 
 // Event Listener for Category Change

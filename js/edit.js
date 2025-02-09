@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Load Lottie Animation
     const animation = document.createElement("lottie-player");
-    animation.setAttribute("src", "../images/loader.json"); // Replace with correct path
+    animation.setAttribute("src", "./images/loader.json"); // Replace with correct path
     animation.setAttribute("background", "transparent");
     animation.setAttribute("speed", "1");
     animation.setAttribute("loop", "");
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (!listingId) {
         alert("No listing ID found.");
-        window.location.href = "../account.html"; // Redirect to My Listings if no ID found
+        window.location.href = "./account.html"; // Redirect to My Listings if no ID found
         return;
     }
 
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
 
             alert("✅ Listing updated successfully!");
-            window.location.href = "../account.html";
+            window.location.href = "./account.html";
 
         } catch (error) {
             console.error("⚠️ Error updating listing:", error);

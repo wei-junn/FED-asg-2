@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Redirect to login if user is not logged in
     const loggedInUserEmail = localStorage.getItem("user_email");
     if (!loggedInUserEmail) {
-        window.location.href = "../index.html";
+        window.location.href = "./index.html";
         return;
     }
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadingContainer.innerHTML = `
         <lottie-player 
             id="loading-animation"
-            src="/images/Animation - 1738385306623.json"
+            src="./images/Animation - 1738385306623.json"
             background="transparent"
             speed="1"
             style="width: 200px; height: 200px;"
@@ -176,5 +176,5 @@ async function deleteListing(id) {
 
 // Function to edit a listing
 function editListing(id) {
-    window.location.href = `../edit.html?id=${id}`;
+    window.location.href = `./edit.html?id=${id}`;
 }
