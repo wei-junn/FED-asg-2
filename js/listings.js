@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "/images/Animation - 1738385306623.json" // Ensure correct path
+        path: "FED-asg-2/images/Animation%20-%201738385306623.json" // Ensure correct path
     });
 
     try {
