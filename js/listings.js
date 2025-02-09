@@ -139,7 +139,7 @@ function createListingCard(listing) {
 
 // Redirect function for clicking on a listing
 function viewListing(id) {
-    window.location.href = `html/listing-details.html?id=${id}`;
+    window.location.href = `../listing-details.html?id=${id}`;
 }
 
 // Event Listener for Category Change
